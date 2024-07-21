@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Blotenote.ViewModel"
     Title="NotesWindow"
-    Width="300"
-    Height="300"
+    Width="800"
+    Height="450"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -27,7 +27,31 @@
                 <MenuItem Click="MenuItem_Click" Header="Exit" />
             </MenuItem>
         </Menu>
-        <Grid />
+        <ListView
+            Width="140"
+            DockPanel.Dock="Left"
+            ItemsSource="{Binding Notebooks}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView
+            Width="140"
+            DockPanel.Dock="Left"
+            ItemsSource="{Binding Notes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Click="SpeechButton_Click" Content="Speech" />
+            </ToolBar>
+        </ToolBarTray>
 
     </DockPanel>
 </Window>
