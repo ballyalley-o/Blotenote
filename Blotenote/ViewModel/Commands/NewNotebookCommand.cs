@@ -25,7 +25,8 @@ namespace Blotenote.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-           // TODO: create new notebook
+            // TODO: create new notebook
+            VM.CreateNotebook();
         }
     }
 }
