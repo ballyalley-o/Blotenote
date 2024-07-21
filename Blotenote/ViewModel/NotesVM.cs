@@ -1,5 +1,6 @@
 ﻿using Blotenote.Model;
 using Blotenote.ViewModel.Commands;
+using Blotenote.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,6 +35,29 @@ namespace Blotenote.ViewModel
         {
             NewNotebookCommand = new NewNotebookCommand(this);
             NewNoteCommand = new NewNoteCommand(this);
+        }
+
+        public void CreateNotebook()
+        {
+            Notebook newNotebook = new Notebook()
+            {
+                Name = "New notebook"
+            };
+
+            DatabaseHelper.Insert(newNotebook);
+        }
+
+        public void CreateNote(int notebookId)
+        {
+            Note newNote = new Note()
+            {
+                NotebookId = notebookId,
+                CreatedTime = DateTime.Now,
+                UpdatedTime = DateTime.Now,
+                Title = "New Note"
+            };
+
+            DatabaseHelper.Insert(newNote);
         }
     }
 }
